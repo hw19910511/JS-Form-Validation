@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/register.css" />
+</head>
+  <style>
+    form li span{
+        display:inline-block;
+        text-align:right;
+        width:100px;
+    }
+    form li p{
+        height:14px;
+        font-size:14px;
+        display:inline-block;
+        color:red;
+    }
+  </style>
+<body>
+   <form name="form1" action="#" metod="post">
+            <ul class="register_form">
+                <li><span>邮箱</span><input type="text" name="email"><p id="email"></p></li>                            <!-- 输入邮箱框 -->
+                <li><span>昵称</span><input type="text" name="username"><p id="username"></p></li>                     <!-- 用户昵称 -->
+                <li><span>密码</span><input type="password" name="password"><p id="pwd"></p></li>                 <!-- 用户密码 -->
+                <li><span>确认密码</span><input type="password" name="password2"><p id="pwd2"></p></li>              <!-- 确认密码 -->
+                <li><span>手机号码</span><input type="text" name="phonenum"><p id="text"></p></li>                   <!-- 手机号码 -->
+                <li><span>验证码</span><input type="text" name="code"><image src="images/register/code.png" /></li>            <!-- 验证码 -->
+                <li><span>&nbsp;</span><input type="checkbox"><span>我已阅读并同意遵守<a href="">MM采购网服务条款</a></span></li>       <!-- 同意服务条款 -->
+                <button class="reg">立即注册<br />REGISTER NOW</button>                         <!-- 注册按钮 -->
+                <button class="log">立即登录<br />LOGIN NOW</button>                            <!-- 登录按钮 -->
+            </ul>
+        </form>
+</body>
+<script>
+    var f = document.forms['form1'];
+    var patt2=new RegExp("[\\u4E00-\\u9FFF]+","g");
+
+    f.email.onblur = function(){
+         t = document.getElementById('email');
+         ema = f.elements['email'].value.length;
+        if(patt2.test(f.elements['email'].value)){
+           t.innerHTML = "*账号不能为中文";
+           return false;
+        }else if(ema > 16&&ema != 0 || ema < 8&&ema != 0){
+           t.innerHTML = "*请输入8-16位字符";
+           return false;
+        }else if(ema == 0){
+           t.innerHTML = "*账号不能为空";
+           return false;
+        }else{
+           t.innerHTML = "";
+        }
+    }
+
+  f.username.onblur = function(){
+       user = document.getElementById('username');
+       username = f.elements['username'].value.length;
+      if(username == 0){
+         user.innerHTML = "*用户名不能为空";
+         return false;
+      }else{
+         user.innerHTML = "";
+      }
+  }
+
+  f.password2.onblur = function(){
+    pwd = document.getElementById('pwd');
+    password = f.elements['password'].value.length;
+    password2 = f.elements['password2'].value.length;
+    if(password == 0){
+       pwd.innerHTML = "*密码不能为空";
+       return false;
+    }else if(password < 6){
+       pwd.innerHTML = "*请输入6位以上字符"; 
+       return false;
+    }else if(password !== password2){
+       pwd.innerHTML = "*两次密码不一致";
+       return false;
+    }else{
+       pwd.innerHTML = "";
+    }
+  }
+
+this.value.length>10&&this.value.length<12&&!isNaN(parseInt(this.value))
+f.phone.onblur = function(){
+    
+}
+</script>
+</html>
